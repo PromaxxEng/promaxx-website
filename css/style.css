@@ -150,7 +150,7 @@ button { font: inherit; }
 .mobile-menu a.mm-cta { margin-top: 8px; padding: 16px; text-align: center; font-size: 16px; font-weight: 600; background: var(--blue); color: #fff; border-radius: 999px; }
 .mobile-menu a.mm-cta:hover { background: var(--blue-dark); color: #fff; }
 
-@media (max-width: 899.98px) {
+@media (max-width: 1099.98px) {
   .nav-links, .nav-cta { display: none; }
   .nav-burger { display: flex; }
 }
@@ -501,6 +501,155 @@ textarea.input { resize: vertical; min-height: 140px; }
   .f-pages, .f-contact { flex-basis: 100%; }
   .footer-inner { padding-left: 24px; padding-right: 24px; }
 }
+
+/* =========================================================================
+   SHARED — outline button (dark backgrounds)
+   ========================================================================= */
+.btn-outline {
+  pointer-events: auto; display: inline-flex; align-items: center; gap: 12px; border-radius: 999px;
+  padding: clamp(14px, 1.6vh, 18px) clamp(24px, 2.4vw, 32px);
+  font-size: 14px; font-weight: 600; line-height: 1.2; color: #fff; border: 1.5px solid rgba(255, 255, 255, .55);
+  transition: border-color .2s ease, background .2s ease;
+}
+.btn-outline:hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, .08); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* =========================================================================
+   HOME — HIGH-PURITY TEASER (links to the Solar & Semiconductor page)
+   ========================================================================= */
+.hp-teaser { background: #f4f8fd; padding: 0 clamp(20px, 6vw, 110px) clamp(48px, 6vw, 80px); }
+.hp-teaser-card {
+  max-width: 1240px; margin: 0 auto; border-radius: 22px; overflow: hidden; color: #fff;
+  background: radial-gradient(70% 90% at 85% 20%, rgba(11, 139, 245, .28), rgba(11, 139, 245, 0) 70%), linear-gradient(150deg, #0a2a5c 0%, var(--navy-900) 100%);
+  box-shadow: 0 30px 60px -34px rgba(7, 23, 51, .55);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); align-items: center;
+  gap: clamp(24px, 3vw, 48px); padding: clamp(28px, 4vw, 56px);
+}
+.hp-teaser-txt { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 16px); min-width: 0; }
+.hp-teaser .h2 { color: #fff; font-size: clamp(26px, 2.8vw, 34px); text-wrap: balance; }
+.hp-teaser p { margin: 0; color: var(--pale); font-size: clamp(14px, 1.1vw, 15px); line-height: 1.65; max-width: 560px; }
+.hp-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 8px; padding: 0; list-style: none; }
+.hp-chips li {
+  font-size: 13px; font-weight: 500; color: #fff; padding: 7px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16);
+}
+.hp-chips b { color: #7cc4ff; font-weight: 700; }
+.hp-teaser .btn-primary { align-self: flex-start; }
+.hp-teaser-media { justify-self: center; width: 100%; max-width: 420px; }
+.hp-teaser-media img, .hp-hero-visual img {
+  width: 100%; height: auto; border-radius: 18px; border: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .6);
+}
+
+/* =========================================================================
+   SOLAR & SEMICONDUCTOR PAGE
+   ========================================================================= */
+.hero-hp { min-height: auto; }
+.hero-hp .hp-hero-inner {
+  position: relative; width: 100%; max-width: 1240px; margin: 0 auto;
+  padding: calc(clamp(32px, 6vh, 64px) + 104px) clamp(20px, 4vw, 48px) clamp(48px, 7vh, 80px);
+  display: flex; flex-direction: column; gap: clamp(32px, 5vh, 56px);
+}
+.hp-hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hp-hero-txt { display: flex; flex-direction: column; gap: clamp(14px, 2vh, 20px); min-width: 0; }
+.hero-hp h1 { font-size: clamp(32px, 4.1vw, 50px); line-height: 1.1; letter-spacing: -1.2px; text-wrap: balance; }
+.hero-hp h1 .accent { -webkit-text-stroke: 0; } /* plain navy behind it: no outline needed */
+.hero-hp .hero-text { margin: 0; max-width: 560px; }
+.hp-hero-visual { justify-self: center; width: 100%; max-width: 470px; }
+.hp-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.hp-stats li {
+  display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 14px;
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12);
+}
+.hp-stats .v { font-size: clamp(24px, 2.4vw, 30px); font-weight: 700; letter-spacing: -.5px; line-height: 1.15; color: #fff; }
+.hp-stats .v sup { font-size: .55em; vertical-align: super; line-height: 0; }
+.hp-stats .l { font-size: 13px; color: var(--pale); line-height: 1.45; }
+
+/* Shared section shells */
+.hp-section { padding: clamp(56px, 8vw, 96px) clamp(16px, 4vw, 48px); }
+.hp-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; }
+.hp-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: clamp(10px, 1.5vh, 16px); }
+.hp-head .h2 { max-width: 900px; text-wrap: balance; }
+.hp-head .lead { max-width: 760px; color: var(--body); text-wrap: balance; }
+.hp-head.on-dark .h2 { color: #fff; }
+.hp-head.on-dark .lead { color: var(--pale); }
+.hp-body { margin-top: clamp(32px, 5vw, 56px); }
+.hp-light { background: linear-gradient(180deg, #fbfcfe 0%, #f3f6fa 100%); }
+.hp-dark { background: var(--navy-700); color: #fff; }
+
+/* Capabilities */
+.hp-cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(16px, 2vw, 24px); }
+.hp-cap {
+  display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 44px -26px rgba(0, 0, 0, .3), 0 0 0 1px #edf0f4; transition: translate .35s ease, box-shadow .35s ease;
+}
+.hp-cap:hover { translate: 0 -5px; box-shadow: 0 28px 56px -26px rgba(0, 0, 0, .4), 0 0 0 1px #dfe6ee; }
+.hp-cap-media { background: #E9F4F8; aspect-ratio: 762 / 423; overflow: hidden; }
+.hp-cap-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.hp-cap:hover .hp-cap-media img { transform: scale(1.04); }
+.hp-cap-body { display: flex; flex-direction: column; gap: 8px; padding: clamp(18px, 2vw, 24px) clamp(18px, 2vw, 26px) clamp(20px, 2.2vw, 28px); }
+.hp-cap h3 { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.35; letter-spacing: -.2px; color: var(--ink); }
+.hp-cap p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+
+/* Systems */
+.hp-sys-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(16px, 2vw, 24px); }
+.hp-sys {
+  background: #fff; color: var(--ink); border-radius: 18px; padding: clamp(22px, 2.6vw, 32px);
+  box-shadow: 0 0 0 1.5px rgba(70, 173, 255, .35), 0 0 30px rgba(46, 155, 255, .18); display: flex; flex-direction: column; gap: 16px;
+}
+.hp-sys h3 { margin: 0; font-size: clamp(18px, 1.6vw, 20px); font-weight: 600; letter-spacing: -.2px; border-left: 4px solid var(--blue); padding: 2px 0 2px 14px; }
+.hp-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.hp-list li { display: flex; gap: 12px; font-size: 14px; line-height: 1.55; color: var(--body); }
+.hp-list li::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--blue); margin-top: 7px; }
+.hp-list sub { font-size: .72em; line-height: 0; }
+
+/* Industries */
+.hp-ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: clamp(16px, 2vw, 24px); }
+.hp-ind { border-top: 3px solid var(--blue); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+.hp-ind h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; color: var(--ink); }
+.hp-ind p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted); }
+
+/* Engagement model */
+.hp-eng-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: clamp(14px, 1.6vw, 20px); counter-reset: eng; }
+.hp-eng {
+  border-radius: 16px; padding: clamp(20px, 2.2vw, 28px); border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .04); display: flex; flex-direction: column; gap: 10px; transition: border-color .3s ease, background .3s ease;
+}
+.hp-eng:hover { border-color: rgba(70, 173, 255, .6); background: rgba(255, 255, 255, .07); }
+.hp-eng .n { font-size: 34px; font-weight: 700; line-height: 1; color: var(--blue-text); letter-spacing: -1px; }
+.hp-eng h3 { margin: 6px 0 0; font-size: 17px; font-weight: 600; line-height: 1.35; color: #fff; }
+.hp-eng p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--pale); }
+
+/* Quality & safety */
+.hp-quality { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.hp-quality .hp-head { align-items: flex-start; text-align: left; }
+.hp-std { margin: 0; padding: 0; list-style: none; border-top: 1px solid #dfe6ee; }
+.hp-std li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; padding: 16px 0; border-bottom: 1px solid #dfe6ee; font-size: 14px; line-height: 1.5; }
+.hp-std b { font-weight: 600; color: var(--ink); }
+.hp-std span { color: var(--muted); text-align: right; }
+
+/* Process & utility engineering */
+.hp-proc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: clamp(14px, 1.6vw, 20px); }
+.hp-proc {
+  background: #fff; border-radius: 14px; padding: clamp(18px, 2vw, 24px); display: flex; flex-direction: column; gap: 8px;
+  box-shadow: 0 18px 40px -28px rgba(13, 27, 51, .35), 0 0 0 1px #edf0f4;
+}
+.hp-proc h3 { margin: 0; font-size: 17px; font-weight: 600; color: var(--blue-text); }
+.hp-proc p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--body); }
+.hp-more { margin-top: clamp(20px, 3vw, 28px); align-self: center; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 10px; color: var(--blue-text); }
+.hp-more:hover { color: var(--blue-dark); }
+
+/* Call to action */
+.hp-cta { background: linear-gradient(120deg, #0B6FF0 0%, var(--blue) 100%); color: #fff; padding: clamp(40px, 6vw, 72px) clamp(16px, 4vw, 48px); }
+.hp-cta-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
+.hp-cta .h2 { color: #fff; font-size: clamp(26px, 2.8vw, 34px); text-wrap: balance; }
+.hp-cta p { margin: 10px 0 0; color: #EAF4FF; font-size: clamp(14px, 1.2vw, 16px); line-height: 1.6; max-width: 620px; }
+.btn-light {
+  display: inline-flex; align-items: center; gap: 12px; border-radius: 999px; padding: 16px 28px; font-size: 14px; font-weight: 600;
+  background: #fff; color: #0a4a94; box-shadow: 0 14px 28px -14px rgba(7, 23, 51, .5); transition: translate .2s ease, box-shadow .3s ease;
+}
+.btn-light:hover { color: #0a4a94; translate: 0 -2px; box-shadow: 0 18px 32px -14px rgba(7, 23, 51, .6); }
+.hp-cta .btn-outline { border-color: rgba(255, 255, 255, .7); }
 
 /* =========================================================================
    MOTION (only when JS is running and the visitor allows motion)

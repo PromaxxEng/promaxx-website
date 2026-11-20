@@ -30,7 +30,7 @@
   if (menu) menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('click', function (e) { if (menu && menu.classList.contains('open') && !menu.contains(e.target)) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
-  window.addEventListener('resize', function () { if (window.innerWidth >= 900) setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth >= 1100) setMenu(false); });
 
   /* ---------------------------------------------------------- ambient image motion */
   if (motion) {
