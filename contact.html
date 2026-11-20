@@ -54,8 +54,14 @@
       </a>
       <div class="nav-links" data-reveal-stagger="up" data-reveal-delay="200" data-reveal-step="100">
         <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
-        <a href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+        <div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="dd-services">Services<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="nav-dd-panel" id="dd-services">
+            <a href="index.html#services"><b>Core engineering</b><span>Tank farms, process piping, consultancy</span></a>
+            <a href="solar-semiconductor.html"><b>Solar &amp; Semiconductor</b><span>High-purity installation teams</span></a>
+            <a href="orbital-welding.html"><b>Orbital Welding</b><span>UHP gas lines and EP tubing</span></a>
+          </div>
+        </div>
         <a href="index.html#why">About</a>
         <a href="index.html#approach">How We Work</a>
       </div>
@@ -67,8 +73,10 @@
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+    <span class="mm-label">Services</span>
+    <a class="mm-sub" href="index.html#services">Core engineering</a>
+    <a class="mm-sub" href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+    <a class="mm-sub" href="orbital-welding.html">Orbital Welding</a>
     <a href="index.html#why">About</a>
     <a href="index.html#approach">How We Work</a>
     <a class="mm-cta" href="contact.html" aria-current="page">Contact us</a>
@@ -174,6 +182,7 @@
           <a href="index.html#why">About</a>
           <a href="index.html#services">Services</a>
           <a href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+          <a href="orbital-welding.html">Orbital Welding</a>
           <a href="index.html#approach">How We Work</a>
           <a href="contact.html" aria-current="page">Contact Us</a>
         </div>

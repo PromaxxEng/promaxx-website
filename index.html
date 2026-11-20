@@ -76,8 +76,14 @@
       </a>
       <div class="nav-links" data-reveal-stagger="up" data-reveal-delay="200" data-reveal-step="100">
         <a href="index.html" aria-current="page">Home</a>
-        <a href="#services">Services</a>
-        <a href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+        <div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="dd-services">Services<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="nav-dd-panel" id="dd-services">
+            <a href="#services"><b>Core engineering</b><span>Tank farms, process piping, consultancy</span></a>
+            <a href="solar-semiconductor.html"><b>Solar &amp; Semiconductor</b><span>High-purity installation teams</span></a>
+            <a href="orbital-welding.html"><b>Orbital Welding</b><span>UHP gas lines and EP tubing</span></a>
+          </div>
+        </div>
         <a href="#why">About</a>
         <a href="#approach">How We Work</a>
       </div>
@@ -88,9 +94,11 @@
     <a class="nav-cta" data-reveal="scale" data-reveal-delay="450" href="contact.html">Contact us</a>
   </nav>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html">Home</a>
-    <a href="#services">Services</a>
-    <a href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+    <a href="index.html" aria-current="page">Home</a>
+    <span class="mm-label">Services</span>
+    <a class="mm-sub" href="#services">Core engineering</a>
+    <a class="mm-sub" href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+    <a class="mm-sub" href="orbital-welding.html">Orbital Welding</a>
     <a href="#why">About</a>
     <a href="#approach">How We Work</a>
     <a class="mm-cta" href="contact.html">Contact us</a>
@@ -275,7 +283,10 @@
         <li><b>30 days</b> typical crew mobilisation</li>
         <li><b>1×10<sup>−9</sup></b> atm·cc/s helium leak test</li>
       </ul>
-      <a class="btn-primary hc" href="solar-semiconductor.html">Explore high-purity services<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="btn-row">
+        <a class="btn-primary hc" href="solar-semiconductor.html">Explore high-purity services<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn-outline teaser-orbital" href="orbital-welding.html">Orbital welding services</a>
+      </div>
     </div>
     <div class="hp-teaser-media"><img src="img/hp-gas-panel.webp" width="980" height="867" alt="Illustration of a gas distribution panel feeding process gas lines to a tool" loading="lazy" decoding="async"></div>
   </div>
@@ -379,6 +390,7 @@
           <a href="#why">About</a>
           <a href="#services">Services</a>
           <a href="solar-semiconductor.html">Solar &amp; Semiconductor</a>
+          <a href="orbital-welding.html">Orbital Welding</a>
           <a href="#approach">How We Work</a>
           <a href="contact.html">Contact Us</a>
         </div>

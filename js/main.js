@@ -30,7 +30,17 @@
   if (menu) menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('click', function (e) { if (menu && menu.classList.contains('open') && !menu.contains(e.target)) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
-  window.addEventListener('resize', function () { if (window.innerWidth >= 1100) setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth >= 900) setMenu(false); });
+
+  /* ---------------------------------------------------------- services dropdown */
+  document.querySelectorAll('.nav-dd').forEach(function (dd) {
+    var btn = dd.querySelector('.nav-dd-btn');
+    function setDd(open) { dd.classList.toggle('open', open); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); setDd(!dd.classList.contains('open')); });
+    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) setDd(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.classList.contains('open')) { setDd(false); btn.focus(); } });
+    dd.addEventListener('focusout', function (e) { if (!dd.contains(e.relatedTarget)) setDd(false); });
+  });
 
   /* ---------------------------------------------------------- ambient image motion */
   if (motion) {

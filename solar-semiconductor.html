@@ -46,8 +46,14 @@
       </a>
       <div class="nav-links" data-reveal-stagger="up" data-reveal-delay="200" data-reveal-step="100">
         <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
-        <a href="solar-semiconductor.html" aria-current="page">Solar &amp; Semiconductor</a>
+        <div class="nav-dd">
+          <button class="nav-dd-btn is-current" type="button" aria-expanded="false" aria-controls="dd-services">Services<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="nav-dd-panel" id="dd-services">
+            <a href="index.html#services"><b>Core engineering</b><span>Tank farms, process piping, consultancy</span></a>
+            <a href="solar-semiconductor.html" aria-current="page"><b>Solar &amp; Semiconductor</b><span>High-purity installation teams</span></a>
+            <a href="orbital-welding.html"><b>Orbital Welding</b><span>UHP gas lines and EP tubing</span></a>
+          </div>
+        </div>
         <a href="index.html#why">About</a>
         <a href="index.html#approach">How We Work</a>
       </div>
@@ -59,8 +65,10 @@
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="solar-semiconductor.html" aria-current="page">Solar &amp; Semiconductor</a>
+    <span class="mm-label">Services</span>
+    <a class="mm-sub" href="index.html#services">Core engineering</a>
+    <a class="mm-sub" href="solar-semiconductor.html" aria-current="page">Solar &amp; Semiconductor</a>
+    <a class="mm-sub" href="orbital-welding.html">Orbital Welding</a>
     <a href="index.html#why">About</a>
     <a href="index.html#approach">How We Work</a>
     <a class="mm-cta" href="contact.html">Contact us</a>
@@ -103,7 +111,7 @@
     <div class="hp-body hp-cap-grid" data-reveal-stagger="up" data-reveal-step="120">
       <article class="hp-cap">
         <div class="hp-cap-media"><img src="img/hp-orbital-welding.webp" width="762" height="423" alt="Illustration of an orbital welding head on stainless tubing" loading="lazy" decoding="async"></div>
-        <div class="hp-cap-body"><h3>Orbital welding &amp; UHP gas lines</h3><p>Autogenous orbital GTAW on 316L EP tubing from ¼" to 2". Bulk and specialty gas lines, single-wall and coaxial, with weld logs and borescope records.</p></div>
+        <div class="hp-cap-body"><h3>Orbital welding &amp; UHP gas lines</h3><p>Autogenous orbital GTAW on 316L EP tubing from ¼" to 2". Bulk and specialty gas lines, single-wall and coaxial, with weld logs and borescope records.</p><a class="hp-cap-link" href="orbital-welding.html">Orbital welding services<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </article>
       <article class="hp-cap">
         <div class="hp-cap-media"><img src="img/hp-plastic-welding.webp" width="762" height="423" alt="Illustration of two PVDF pipes being fusion welded" loading="lazy" decoding="async"></div>
@@ -261,6 +269,7 @@
           <a href="index.html#why">About</a>
           <a href="index.html#services">Services</a>
           <a href="solar-semiconductor.html" aria-current="page">Solar &amp; Semiconductor</a>
+          <a href="orbital-welding.html">Orbital Welding</a>
           <a href="index.html#approach">How We Work</a>
           <a href="contact.html">Contact Us</a>
         </div>
