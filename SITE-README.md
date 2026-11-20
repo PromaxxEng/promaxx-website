@@ -10,6 +10,7 @@ No build step and no framework: plain HTML, CSS and JavaScript. Works on any sta
 |---|---|
 | `site/index.html` | Home: hero, intro, services, workforce, why PROMAXX, approach, footer |
 | `site/contact.html` | Contact Us: hero, call/email cards, enquiry form, footer |
+| `site/solar-semiconductor.html` | Solar & Semiconductor (high-purity installation): capabilities, systems, industries, engagement model, quality standards, process engineering, CTA. Content from the client's PDF, illustrations cropped from it (`tools/source/solar/`). Teaser card on Home links here. |
 | `site/css/style.css` | All styles (design tokens at the top) |
 | `site/js/main.js` | Nav, scroll reveals, hero parallax, ambient image motion, form |
 | `site/img/` | WebP images (20 MB of PNGs reduced to 1.25 MB) |
