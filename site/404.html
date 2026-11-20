@@ -31,10 +31,16 @@
   <nav class="nav" aria-label="Main">
     <div class="nav-pill">
       <a class="nav-logo" href="/" aria-label="PROMAXX Engineering home"><img src="/img/promaxx-logo.webp" width="869" height="216" alt="PROMAXX Engineering — Engineering for Peak performance"></a>
-      <div class="nav-links">
+      <div class="nav-links" data-reveal-stagger="up" data-reveal-delay="200" data-reveal-step="100">
         <a href="/">Home</a>
-        <a href="/#services">Services</a>
-        <a href="/solar-semiconductor.html">Solar &amp; Semiconductor</a>
+        <div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="dd-services">Services<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="nav-dd-panel" id="dd-services">
+            <a href="/#services"><b>Core engineering</b><span>Tank farms, process piping, consultancy</span></a>
+            <a href="/solar-semiconductor.html"><b>Solar &amp; Semiconductor</b><span>High-purity installation teams</span></a>
+            <a href="/orbital-welding.html"><b>Orbital Welding</b><span>UHP gas lines and EP tubing</span></a>
+          </div>
+        </div>
         <a href="/#why">About</a>
         <a href="/#approach">How We Work</a>
       </div>
