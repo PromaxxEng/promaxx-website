@@ -87,13 +87,29 @@
       a.onfinish = function () { a.cancel(); };
     }
 
+    var pending = new Set();
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         io.unobserve(e.target);
+        pending.delete(e.target);
         play(e.target.__rv);
       });
     }, { threshold: 0.05, rootMargin: '0px 0px -15% 0px' });
+
+    // Items in the last 15% of the page can never cross the trigger line above,
+    // so once the visitor reaches the end, reveal whatever is still in view.
+    function flushAtBottom() {
+      if (!pending.size) return;
+      if (window.innerHeight + window.scrollY < document.documentElement.scrollHeight - 2) return;
+      pending.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          io.unobserve(el); pending.delete(el); play(el.__rv);
+        }
+      });
+    }
+    window.addEventListener('scroll', flushAtBottom, { passive: true });
+    window.addEventListener('resize', flushAtBottom);
 
     items.forEach(function (it) {
       it.el.__rv = it;
@@ -106,9 +122,11 @@
         }, { threshold: 0.01 });
         po.observe(target);
       } else {
+        pending.add(it.el);
         io.observe(it.el);
       }
     });
+    flushAtBottom(); // short pages can already be at the bottom on load
   }
 
   /* ---------------------------------------------------------- contact form */
