@@ -27,46 +27,64 @@ python -m http.server 5173 --directory site
 
 Then open http://localhost:5173
 
-## Deploy: Netlify + Hostinger DNS (chosen 5 Nov 2026)
+## Go live on promaxxeng.com: GitHub + Netlify + Hostinger DNS
 
-The upload package is `deploy/promaxx-site/`, also zipped as `deploy/promaxx-site.zip`.
-It leaves out `.claude/` and includes Netlify's `_redirects` (old `/contact` link still works),
-`_headers` (security headers plus image caching) and `404.html`.
-After changing anything in `site/`, rebuild the package before uploading again.
+State checked 20 Nov 2026: promaxxeng.com is still served by Framer, the DNS records are in
+Hostinger (nameservers `ns1/ns2.dns-parking.com`), and email runs on Proton Mail. The code is in
+GitHub at `metricascentai-lang/promaxx-website` (branch `main`). `netlify.toml` tells Netlify to
+publish the `site/` folder with no build step. Netlify values were re-checked in its docs the same day.
 
-**1. Put the site on Netlify (on a computer)**
-1. Sign up at https://app.netlify.com.
-2. Open https://app.netlify.com/drop and drag the `deploy/promaxx-site` folder onto the page.
-3. Netlify gives the site an address like `something-123.netlify.app`. Open it and check it.
-4. Optional: in **Site configuration → Change site name**, rename it, e.g. `promaxx-engineering.netlify.app`.
+**Step 1: Move the code to the client's GitHub** (skip it to keep the repo on your account)
+1. The client creates a free GitHub account and sends the username.
+2. On github.com/metricascentai-lang/promaxx-website go to **Settings → General → Danger Zone →
+   Transfer**, then enter the client's username.
+3. The client accepts the transfer in GitHub's email **within 24 hours**. You stay on as a collaborator.
 
-**2. Add the domain in Netlify**
-**Domain management → Add a domain** → enter `promaxxeng.com`. Choose **external DNS**, not Netlify DNS.
-Netlify adds `www.promaxxeng.com` too.
+**Step 2: Create the Netlify site from GitHub** (in the Netlify account that will own the site)
+1. Sign up at https://app.netlify.com using **Sign up with GitHub**.
+2. **Add new project → Import an existing project → GitHub**, then authorise Netlify for the repository.
+3. Pick `promaxx-website`, branch `main`. Leave the build command empty. Publish directory `site`
+   is filled in by `netlify.toml`.
+4. Click **Deploy**. You get an address like `something-123.netlify.app`. Open it and check the
+   pages: Home, Services dropdown, Solar & Semiconductor, Orbital Welding, Contact.
+5. Optional: **Project configuration → Change project name**, e.g. `promaxx-engineering`.
 
-**3. Point the domain in Hostinger**
-Go to hPanel → Domains → promaxxeng.com → **DNS / Nameservers → DNS records**.
+**Step 3: Add the domain in Netlify**
+**Domain management → Add a domain** → `promaxxeng.com` → **Verify** → **Add domain**. If asked,
+choose external DNS (keep DNS at Hostinger), **not** Netlify DNS. Netlify adds `www` too.
 
-| Action | Type | Name | Value now (Framer) | New value |
+**Step 4: Point the domain in Hostinger**
+hPanel → **Domains → promaxxeng.com → DNS / Nameservers → DNS records**:
+
+| Action | Type | Name | Current value (Framer) | New value |
 |---|---|---|---|---|
 | Delete | A | `@` | `31.43.160.6` | — |
 | Delete | A | `@` | `31.43.161.6` | — |
-| Add | A | `@` | — | `75.2.60.5` |
-| Edit | CNAME | `www` | `sites.framer.app` | `your-site-name.netlify.app` |
+| Add | A | `@` | — | `75.2.60.5` (TTL 3600) |
+| Edit | CNAME | `www` | `sites.framer.app` | `your-project-name.netlify.app` |
 
-Do **not** touch the MX records (`mail.protonmail.ch`, `mailsec.protonmail.ch`) or the TXT records
-(`protonmail-verification…`, `v=spf1 include:_spf.protonmail.ch ~all`). They run @promaxxeng.com email.
-If Hostinger has an ALIAS record type, `@` ALIAS → `apex-loadbalancer.netlify.com` is Netlify's
-preferred choice. The A record above is the standard fallback and works fine.
+**Do not touch** the MX records (`mail.protonmail.ch`, `mailsec.protonmail.ch`) or the TXT records
+(`protonmail-verification=…`, `v=spf1 include:_spf.protonmail.ch ~all`). They run @promaxxeng.com email.
+If Hostinger offers an ALIAS type, `@` ALIAS → `apex-loadbalancer.netlify.com` is Netlify's first
+choice. The A record works fine too.
 
-**4. HTTPS**
-Back in Netlify, go to **Domain management → HTTPS → Verify DNS configuration**. The free
-Let's Encrypt certificate is issued automatically, usually within minutes. DNS changes can take
-up to a few hours to reach everyone.
+**Step 5: HTTPS**
+Netlify → **Domain management → HTTPS → Verify DNS configuration**. The free certificate issues
+automatically, usually within minutes. The DNS change reaches everyone within a few hours.
 
-**5. Afterwards**
-In Framer, remove promaxxeng.com from the project and switch off the plan's auto-renew. It is
-paid to 7 Mar 2027.
+**Step 6: Check and tidy up**
+1. Open https://promaxxeng.com and https://www.promaxxeng.com: both should show the new site with
+   the padlock. Send a test email to info@promaxxeng.com to confirm mail still arrives.
+2. In Framer, remove the custom domain from the project and switch off auto-renew (paid to 7 Mar 2027).
+3. Switch off the GitHub Pages preview (repo **Settings → Pages → Unpublish**), so the only live
+   copy is promaxxeng.com.
+
+**Future updates**
+Every push to `main` on GitHub makes Netlify republish the site automatically, usually within a
+minute. No more manual uploads.
+
+The `deploy/promaxx-site/` folder and zip are kept only as a fallback for a manual upload
+(Netlify Drop, or another host's `public_html`).
 
 ## Other hosts
 
