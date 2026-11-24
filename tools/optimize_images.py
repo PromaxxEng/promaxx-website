@@ -1,4 +1,4 @@
-"""Build web-optimized images for site/ from the Claude Design handoff assets.
+"""Build web-optimized images for docs/ from the Claude Design handoff assets.
 Run:  python tools/optimize_images.py
 """
 from pathlib import Path
@@ -6,7 +6,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "promaxx-website" / "project" / "assets"
-OUT = ROOT / "site" / "img"
+OUT = ROOT / "docs" / "img"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # name -> max width (None = keep native)
@@ -55,7 +55,7 @@ mark = Image.open(SRC / "promaxx-mark-transparent.png").convert("RGBA")
 mark = mark.crop(mark.getchannel("A").getbbox())
 side = max(mark.size); sq = Image.new("RGBA", (side, side), (0, 0, 0, 0))
 sq.paste(mark, ((side - mark.width) // 2, (side - mark.height) // 2)); 
-SITE = ROOT / "site"
+SITE = ROOT / "docs"
 sq.resize((32, 32), Image.LANCZOS).save(SITE / "favicon-32.png", optimize=True)
 sq.resize((192, 192), Image.LANCZOS).save(SITE / "icon-192.png", optimize=True)
 sq.resize((512, 512), Image.LANCZOS).save(SITE / "icon-512.png", optimize=True)

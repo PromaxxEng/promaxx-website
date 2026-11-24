@@ -1,94 +1,76 @@
 # PROMAXX Engineering website
 
 Static website built from the Claude Design handoff in `promaxx-website/` (Home + Contact Us).
-No build step and no framework: plain HTML, CSS and JavaScript. Works on any static host
-(Hostinger, Netlify, Cloudflare Pages, GitHub Pages, cPanel).
+No build step and no framework: plain HTML, CSS and JavaScript, in the `docs/` folder.
+Hosted on GitHub Pages straight from `docs/` on branch `main` (see "Hosting" below).
 
 ## What is where
 
 | Path | What it is |
 |---|---|
-| `site/index.html` | Home: hero, intro, services, workforce, why PROMAXX, approach, footer |
-| `site/contact.html` | Contact Us: hero, call/email cards, enquiry form, footer |
-| `site/solar-semiconductor.html` | Solar & Semiconductor (high-purity installation): capabilities, systems, industries, engagement model, quality standards, process engineering, CTA. Content from the client's PDF, illustrations cropped from it (`tools/source/solar/`). Teaser card on Home links here. |
-| `site/orbital-welding.html` | Orbital Welding Services: why orbital, what we weld, gas services, 6-step process, documentation and standards, industries. Original wording; scope modelled on semi-gensys.com's orbital page, claims kept to what the client's PDF supports. |
-| `site/css/style.css` | All styles (design tokens at the top) |
-| `site/js/main.js` | Nav, scroll reveals, hero parallax, ambient image motion, form |
-| `site/img/` | WebP images (20 MB of PNGs reduced to 1.25 MB) |
-| `site/favicon*`, `icon-*`, `apple-touch-icon.png`, `og-image.jpg` | Icons and link-preview image |
-| `site/robots.txt`, `site/sitemap.xml`, `site/site.webmanifest` | SEO and app metadata (domain set to promaxxeng.com) |
-| `tools/optimize_images.py` | Rebuilds `site/img` and the icons from `promaxx-website/project/assets` |
+| `docs/index.html` | Home: hero, intro, services, workforce, why PROMAXX, approach, footer |
+| `docs/contact.html` | Contact Us: hero, call/email cards, enquiry form, footer |
+| `docs/solar-semiconductor.html` | Solar & Semiconductor (high-purity installation): capabilities, systems, industries, engagement model, quality standards, process engineering, CTA. Content from the client's PDF, illustrations cropped from it (`tools/source/solar/`). Teaser card on Home links here. |
+| `docs/orbital-welding.html` | Orbital Welding Services: why orbital, what we weld, gas services, 6-step process, documentation and standards, industries. Original wording; scope modelled on semi-gensys.com's orbital page, claims kept to what the client's PDF supports. |
+| `docs/css/style.css` | All styles (design tokens at the top) |
+| `docs/js/main.js` | Nav, scroll reveals, hero parallax, ambient image motion, form |
+| `docs/img/` | WebP images (20 MB of PNGs reduced to 1.25 MB) |
+| `docs/favicon*`, `icon-*`, `apple-touch-icon.png`, `og-image.jpg` | Icons and link-preview image |
+| `docs/robots.txt`, `docs/sitemap.xml`, `docs/site.webmanifest` | SEO and app metadata (domain set to promaxxeng.com) |
+| `tools/optimize_images.py` | Rebuilds `docs/img` and the icons from `promaxx-website/project/assets` |
 
 ## Preview locally
 
 ```bash
-python -m http.server 5173 --directory site
+python -m http.server 5173 --directory docs
 ```
 
 Then open http://localhost:5173
 
-## Go live on promaxxeng.com: GitHub + Netlify + Hostinger DNS
+## Hosting: GitHub Pages from `docs/` (chosen 24 Nov 2026)
 
-State checked 20 Nov 2026: promaxxeng.com is still served by Framer, the DNS records are in
-Hostinger (nameservers `ns1/ns2.dns-parking.com`), and email runs on Proton Mail. The code is in
-GitHub at `metricascentai-lang/promaxx-website` (branch `main`). `netlify.toml` tells Netlify to
-publish the `site/` folder with no build step. Netlify values were re-checked in its docs the same day.
+- Code: github.com/PromaxxEng/promaxx-website (owner PromaxxEng; metricascentai-lang is a collaborator with push access).
+- GitHub Pages publishes the `docs/` folder of branch `main`. **Every push to `main` goes live
+  automatically** within about a minute. `docs/.nojekyll` turns off GitHub's Jekyll processing.
+- Why not Netlify / Vercel / Cloudflare: Netlify Free (projects created after 19 Aug 2026) forces a
+  "Powered by Netlify" badge; removing it needs Personal ($9/month). Vercel's free Hobby plan is
+  non-commercial only. Cloudflare Pages needs the domain's nameservers moved to Cloudflare, which
+  puts the Proton email records at risk. GitHub Pages: free, no badge, only website records change.
+- GitHub's rule: Pages may not be used to run an online business or a site "primarily directed at
+  facilitating commercial transactions". This is an informational company site with no sales or
+  payments, which in our reading is allowed.
 
-**Step 1: Move the code to the client's GitHub** (skip it to keep the repo on your account)
-1. The client creates a free GitHub account and sends the username.
-2. On github.com/metricascentai-lang/promaxx-website go to **Settings → General → Danger Zone →
-   Transfer**, then enter the client's username.
-3. The client accepts the transfer in GitHub's email **within 24 hours**. You stay on as a collaborator.
+### One-time setup (done by the PromaxxEng account; collaborators cannot change Pages settings)
+1. Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main`,
+   folder `/docs` → Save**.
+2. Same page, **Custom domain: `promaxxeng.com` → Save**. (Add the domain here **before** changing DNS.)
+3. After DNS works, tick **Enforce HTTPS** (can take up to 24 hours to become available).
 
-**Step 2: Create the Netlify site from GitHub** (in the Netlify account that will own the site)
-1. Sign up at https://app.netlify.com using **Sign up with GitHub**.
-2. **Add new project → Import an existing project → GitHub**, then authorise Netlify for the repository.
-3. Pick `promaxx-website`, branch `main`. Leave the build command empty. Publish directory `site`
-   is filled in by `netlify.toml`.
-4. Click **Deploy**. You get an address like `something-123.netlify.app`. Open it and check the
-   pages: Home, Services dropdown, Solar & Semiconductor, Orbital Welding, Contact.
-5. Optional: **Project configuration → Change project name**, e.g. `promaxx-engineering`.
+### DNS at Hostinger: website records only
+hPanel → Domains → promaxxeng.com → DNS / Nameservers → DNS records. Nameservers stay
+`ns1/ns2.dns-parking.com`.
 
-**Step 3: Add the domain in Netlify**
-**Domain management → Add a domain** → `promaxxeng.com` → **Verify** → **Add domain**. If asked,
-choose external DNS (keep DNS at Hostinger), **not** Netlify DNS. Netlify adds `www` too.
-
-**Step 4: Point the domain in Hostinger**
-hPanel → **Domains → promaxxeng.com → DNS / Nameservers → DNS records**:
-
-| Action | Type | Name | Current value (Framer) | New value |
+| Action | Type | Name | Old value (Framer) | New value |
 |---|---|---|---|---|
 | Delete | A | `@` | `31.43.160.6` | — |
 | Delete | A | `@` | `31.43.161.6` | — |
-| Add | A | `@` | — | `75.2.60.5` (TTL 3600) |
-| Edit | CNAME | `www` | `sites.framer.app` | `your-project-name.netlify.app` |
+| Add | A | `@` | — | `185.199.108.153` |
+| Add | A | `@` | — | `185.199.109.153` |
+| Add | A | `@` | — | `185.199.110.153` |
+| Add | A | `@` | — | `185.199.111.153` |
+| Edit | CNAME | `www` | `sites.framer.app` | `promaxxeng.github.io` |
 
-**Do not touch** the MX records (`mail.protonmail.ch`, `mailsec.protonmail.ch`) or the TXT records
-(`protonmail-verification=…`, `v=spf1 include:_spf.protonmail.ch ~all`). They run @promaxxeng.com email.
-If Hostinger offers an ALIAS type, `@` ALIAS → `apex-loadbalancer.netlify.com` is Netlify's first
-choice. The A record works fine too.
+**Never touch these email records (Proton Mail), checked 24 Nov 2026:**
+MX `@` → `mail.protonmail.ch` (10) and `mailsec.protonmail.ch` (20);
+TXT `@` → `v=spf1 include:_spf.protonmail.ch ~all`; TXT `@` → `protonmail-verification=…`;
+TXT `_dmarc` → `v=DMARC1; p=quarantine`;
+CNAME `protonmail._domainkey`, `protonmail2._domainkey`, `protonmail3._domainkey` → `…domains.proton.ch`.
 
-**Step 5: HTTPS**
-Netlify → **Domain management → HTTPS → Verify DNS configuration**. The free certificate issues
-automatically, usually within minutes. The DNS change reaches everyone within a few hours.
-
-**Step 6: Check and tidy up**
-1. Open https://promaxxeng.com and https://www.promaxxeng.com: both should show the new site with
-   the padlock. Send a test email to info@promaxxeng.com to confirm mail still arrives.
-2. In Framer, remove the custom domain from the project and switch off auto-renew (paid to 7 Mar 2027).
-3. Switch off the GitHub Pages preview (repo **Settings → Pages → Unpublish**), so the only live
-   copy is promaxxeng.com.
-
-**Future updates**
-Every push to `main` on GitHub makes Netlify republish the site automatically, usually within a
-minute. No more manual uploads.
-
-The `deploy/promaxx-site/` folder and zip are kept only as a fallback for a manual upload
-(Netlify Drop, or another host's `public_html`).
-
-## Other hosts
-
-Upload the contents of `deploy/promaxx-site/` to the web root (for example `public_html`).
+### After launch
+- Framer: remove the custom domain and switch off auto-renew before 7 Mar 2027.
+- Netlify: delete the `promaxx-website` project (no longer used).
+- The old `/contact` link from the Framer site works on GitHub Pages without a redirect
+  (GitHub serves `contact.html` for `/contact`).
 
 ## Contact form: needs one setting before launch
 
@@ -98,7 +80,7 @@ already addressed to info@promaxxeng.com. Nothing is lost, but the visitor still
 To have the form send by itself:
 
 1. Create a free form key at https://web3forms.com, using info@promaxxeng.com.
-2. In `site/contact.html`, on the `<form id="contact-form">` tag, set
+2. In `docs/contact.html`, on the `<form id="contact-form">` tag, set
    `data-endpoint="https://api.web3forms.com/submit"`.
 3. Paste the key into `<input type="hidden" name="access_key" value="">`.
 
