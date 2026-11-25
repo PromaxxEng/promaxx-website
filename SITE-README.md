@@ -21,13 +21,20 @@ Hosted on GitHub Pages straight from `docs/` on branch `main` (see "Hosting" bel
 
 ## Preview locally
 
+Links use clean paths (`/contact`, `/orbital-welding`), so use a server that maps them to `.html`:
+
 ```bash
-python -m http.server 5173 --directory docs
+npx serve docs
 ```
 
-Then open http://localhost:5173
+(`python -m http.server` serves the pages but cannot follow the clean links.)
 
-## Hosting: GitHub Pages from `docs/` (chosen 24 Nov 2026)
+## Hosting: GitHub Pages from `docs/` (live on promaxxeng.com since 25 Nov 2026)
+
+Status 25 Nov 2026: Hostinger DNS switched by the domain owner, all 8 Proton email records verified
+unchanged against `handover/email-dns-before.txt`, Let's Encrypt certificate issued for
+promaxxeng.com and www (auto-renewed by GitHub). The domain sits in a Hostinger account that only
+the domain owner can open.
 
 - Code: github.com/PromaxxEng/promaxx-website (owner PromaxxEng; metricascentai-lang is a collaborator with push access).
 - GitHub Pages publishes the `docs/` folder of branch `main`. **Every push to `main` goes live
